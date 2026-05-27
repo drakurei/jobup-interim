@@ -1,0 +1,152 @@
+/**
+ * cards.css — JobCard, BentoGrid, et variantes.
+ */
+
+.job-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--glass-tint);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--text-primary);
+  text-decoration: none;
+  min-height: 280px;
+  will-change: transform;
+  transition: border-color var(--dur-base) var(--ease-out-expo),
+              box-shadow var(--dur-base) var(--ease-out-expo);
+  overflow: hidden;
+}
+.job-card:hover {
+  border-color: var(--brand-glow);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.job-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.job-card__category {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background: rgba(30, 111, 224, 0.1);
+  color: var(--brand-deep);
+  border: 1px solid rgba(30, 111, 224, 0.2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+}
+/* Pastilles secteur : nuances de bleu/gris neutres */
+.job-card__category--btp        { background: rgba(30, 111, 224, 0.12); color: var(--brand-deep); }
+.job-card__category--tertiaire  { background: rgba(77, 148, 240, 0.14); color: var(--brand-deep); }
+.job-card__category--tech       { background: rgba(31, 36, 48, 0.07); color: var(--text-primary); border-color: var(--glass-border-strong); }
+.job-card__category--data       { background: rgba(31, 36, 48, 0.07); color: var(--text-primary); }
+.job-card__category--design     { background: rgba(77, 148, 240, 0.14); color: var(--brand-deep); }
+.job-card__category--marketing  { background: rgba(30, 111, 224, 0.12); color: var(--brand-deep); }
+.job-card__category--produit    { background: rgba(31, 36, 48, 0.07); color: var(--text-primary); }
+.job-card__category--finance    { background: rgba(30, 111, 224, 0.12); color: var(--brand-deep); }
+.job-card__category--cs         { background: rgba(31, 36, 48, 0.07); color: var(--text-primary); }
+
+.job-card__id {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  letter-spacing: var(--tracking-wide);
+}
+
+.job-card__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-xl);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-block: var(--space-3);
+}
+
+.job-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+.job-card__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.job-card__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.job-card__skill {
+  padding: var(--space-1) var(--space-3);
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+}
+
+.job-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--glass-border);
+  padding-top: var(--space-4);
+}
+.job-card__salary {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-base);
+  color: var(--brand-glow);
+}
+.job-card__cta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-primary);
+  transition: transform var(--dur-base) var(--ease-spring);
+}
+.job-card:hover .job-card__cta { transform: translateX(6px); color: var(--brand-glow); }
+
+/* Featured variant : accent bleu discret */
+.job-card--featured {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 1px rgba(30, 111, 224, 0.25), var(--shadow-card);
+}
+.job-card--featured::before {
+  content: 'À LA UNE';
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  left: auto;
+  background: var(--brand-blue);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  z-index: 2;
+}
+
+/* (jobs-filters et jobs-grid déplacés dans filters.css) */

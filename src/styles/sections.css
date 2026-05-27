@@ -1,0 +1,119 @@
+/**
+ * sections.css — sections génériques (heading, valeurs, featured, etc.).
+ */
+
+/* ── Heading de section générique ────────────────────── */
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  max-width: 760px;
+}
+
+.section-heading__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--brand-glow);
+}
+
+.section-heading__title {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.section-heading__subtitle {
+  color: var(--text-secondary);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-loose);
+  max-width: 70ch;
+}
+
+.section-heading--center { align-items: center; text-align: center; }
+
+/* ── Section valeurs (Confiance · Accompagnement · Évolution) ── */
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  align-items: stretch;
+}
+@media (max-width: 1024px) { .values { grid-template-columns: 1fr; } }
+
+.value-card {
+  position: relative;
+  padding: var(--space-6);
+  background: var(--glass-tint);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition:
+    border-color var(--dur-base) var(--ease-out-expo),
+    transform var(--dur-base) var(--ease-out-expo),
+    box-shadow var(--dur-base) var(--ease-out-expo);
+}
+.value-card:hover {
+  border-color: var(--brand-glow);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.value-card__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-widest);
+  color: var(--brand-glow);
+  margin-bottom: var(--space-4);
+}
+.value-card__title {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 2vw, 2rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+.value-card__title-highlight {
+  font-style: italic;
+  color: var(--brand-blue);
+}
+.value-card__desc { color: var(--text-secondary); line-height: var(--lh-loose); }
+
+.value-card__icon {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  width: 64px;
+  height: 64px;
+  opacity: 0.85;
+}
+
+/* ── Featured jobs section ───────────────────────────── */
+
+.featured-jobs__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--space-6);
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.featured-jobs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+@media (max-width: 1024px) { .featured-jobs__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .featured-jobs__grid { grid-template-columns: 1fr; } }

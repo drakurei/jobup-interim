@@ -1,0 +1,136 @@
+/**
+ * filters.css — bandeau de recherche bleu + sidebar filtres du job-board.
+ */
+
+/* ── Bandeau recherche (bleu pleine largeur) ────────── */
+
+.jb-searchbar {
+  position: relative;
+  padding-top: calc(var(--navbar-height) + var(--space-7));
+  padding-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
+  background:
+    linear-gradient(180deg, rgba(13, 71, 161, 0.82) 0%, rgba(13, 71, 161, 0.92) 100%),
+    url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1900&q=80');
+  background-size: cover;
+  background-position: center 35%;
+  text-align: center;
+}
+.jb-searchbar__inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-5); }
+
+.jb-searchbar__title {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.jb-searchrow {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2);
+  background: #fff;
+  border-radius: var(--radius-pill);
+  padding: var(--space-2);
+  box-shadow: 0 18px 50px rgba(8, 20, 45, 0.4);
+  width: 100%;
+  max-width: 920px;
+  margin-inline: auto;
+  text-align: left;
+}
+@media (max-width: 760px) {
+  .jb-searchrow { flex-direction: column; border-radius: var(--radius-lg); }
+}
+
+.jb-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  padding-inline: var(--space-4);
+  border-right: 1px solid var(--glass-border);
+  color: var(--text-muted);
+}
+.jb-field:last-of-type { border-right: none; }
+.jb-field svg { width: 18px; height: 18px; flex-shrink: 0; }
+.jb-field input, .jb-field select {
+  width: 100%;
+  border: none;
+  background: none;
+  padding: var(--space-3) 0;
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+}
+.jb-field input:focus, .jb-field select:focus { outline: none; }
+.jb-field--loc { flex: 0.8; }
+.jb-field--type { flex: 0.6; }
+@media (max-width: 760px) {
+  .jb-field { border-right: none; border-bottom: 1px solid var(--glass-border); }
+  .jb-field:last-of-type { border-bottom: none; }
+}
+
+.jb-searchbtn { border-radius: var(--radius-pill); padding-inline: var(--space-6); white-space: nowrap; }
+
+.jb-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center; }
+.jb-pill {
+  padding: var(--space-2) var(--space-4);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-pill);
+  color: #fff;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-expo);
+}
+.jb-pill:hover { background: rgba(255, 255, 255, 0.22); }
+
+/* ── Sidebar filtres ────────────────────────────────── */
+
+.jb-filters {
+  align-self: start;
+  position: sticky;
+  top: calc(var(--navbar-height) + var(--space-4));
+  background: #fff;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.jb-filters__head { display: flex; justify-content: space-between; align-items: center; }
+.jb-filters__head h3 { font-family: var(--font-display); font-size: var(--fs-lg); font-weight: 700; }
+.jb-filters__reset {
+  background: none; border: none; cursor: pointer;
+  color: var(--brand-blue); font-size: var(--fs-sm); font-weight: 600;
+}
+.jb-filters__reset:hover { text-decoration: underline; }
+
+.jb-fgroup { display: flex; flex-direction: column; gap: var(--space-3); }
+.jb-fgroup h4 {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.jb-check, .jb-radio {
+  display: flex; align-items: center; gap: var(--space-3);
+  cursor: pointer; color: var(--text-secondary); font-size: var(--fs-sm);
+}
+.jb-check__label { flex: 1; }
+.jb-check__count {
+  font-size: var(--fs-xs); color: var(--text-muted);
+  background: var(--bg-deep); padding: 1px 8px; border-radius: var(--radius-pill);
+}
+.jb-check input, .jb-radio input { accent-color: var(--brand-blue); width: 16px; height: 16px; }
+.jb-check:hover, .jb-radio:hover { color: var(--text-primary); }
+
+.jb-range { width: 100%; accent-color: var(--brand-blue); }
+.jb-range__row { display: flex; justify-content: space-between; font-size: var(--fs-xs); color: var(--text-muted); }
+#jb-salary-val { color: var(--brand-blue); font-weight: 600; }

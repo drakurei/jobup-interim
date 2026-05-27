@@ -1,0 +1,144 @@
+/**
+ * editorial.css — typographies massive style magazine (Spylt-inspired).
+ *
+ * - .editorial-headline : titre massif multi-lignes, line-height écrasé
+ * - .highlight-box      : pavé coloré inline contenant du texte (amber / acid)
+ * - .editorial-stack    : flex column étirée avec rotation légère par ligne
+ * - .strike-accent      : barre de surlignage diagonale
+ */
+
+.editorial-headline {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3.5rem, 9.5vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.editorial-headline__line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  will-change: transform;
+}
+
+.editorial-headline__line--right { justify-content: flex-end; }
+.editorial-headline__line--center { justify-content: center; }
+
+/* ── Highlight boxes ─────────────────────────────────── */
+
+.highlight-box {
+  display: inline-block;
+  padding: 0.04em 0.28em 0.08em;
+  border-radius: 0.12em;
+  letter-spacing: -0.02em;
+  transform: rotate(-0.6deg);
+  position: relative;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.highlight-box--amber {
+  background: var(--hl-amber);
+  color: var(--hl-ink);
+}
+
+.highlight-box--blue {
+  background: var(--brand-blue);
+  color: #ffffff;
+}
+
+.highlight-box--ink {
+  background: var(--hl-ink);
+  color: #ffffff;
+  outline: 1.5px solid #ffffff;
+}
+
+/* rotation très subtile, en alternance pour rythme magazine */
+.highlight-box:nth-of-type(2n) { transform: rotate(0.5deg); }
+
+/* ── Strike / souligné cinglé ────────────────────────── */
+
+.strike-accent {
+  position: relative;
+  display: inline-block;
+  color: var(--text-primary);
+}
+
+.strike-accent::after {
+  content: '';
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  top: 55%;
+  height: 12%;
+  background: var(--hl-amber);
+  transform: rotate(-2deg);
+  z-index: -1;
+}
+
+/* ── Gradient text accent (réutilise du hero) ───────── */
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, var(--brand-glow) 0%, var(--neon-accent) 50%, var(--brand-blue) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Outline text (style poster) ─────────────────────── */
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text-primary);
+  text-stroke: 2px var(--text-primary);
+}
+
+/* ── Eyebrow / label fin ─────────────────────────────── */
+
+.label-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  background: var(--glass-tint);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.label-eyebrow__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.6);
+  animation: pulseGlow 2.4s ease-in-out infinite;
+}
+
+/* ── Tickerlike marquee small caps ───────────────────── */
+
+.ticker {
+  display: flex;
+  gap: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ticker__sep { color: var(--brand-glow); }

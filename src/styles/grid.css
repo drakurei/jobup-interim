@@ -1,0 +1,66 @@
+/**
+ * grid.css — bento grids et layouts principaux.
+ * S'appuie sur les variables de variables.css (espaces).
+ */
+
+/* ── Bento grid : asymétrique 12 colonnes ──────────── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-5);
+  width: 100%;
+}
+
+.bento-cell--sm { grid-column: span 4; }
+.bento-cell--md { grid-column: span 6; }
+.bento-cell--lg { grid-column: span 8; }
+.bento-cell--xl { grid-column: span 12; }
+
+@media (max-width: 1024px) {
+  .bento-cell--sm { grid-column: span 6; }
+  .bento-cell--md { grid-column: span 12; }
+  .bento-cell--lg { grid-column: span 12; }
+}
+
+@media (max-width: 640px) {
+  .bento-grid { gap: var(--space-3); }
+  .bento-cell--sm,
+  .bento-cell--md,
+  .bento-cell--lg,
+  .bento-cell--xl { grid-column: span 12; }
+}
+
+/* ── Section paddings standards (généreux, premium calme) ── */
+.section {
+  padding-block: clamp(var(--space-9), 12vh, var(--space-10));
+  position: relative;
+}
+
+.section--hero {
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: var(--space-8);
+}
+
+.section--compact { padding-block: var(--space-8); }
+
+/* Sections alternées : fond gris pastel plus profond */
+.section--alt {
+  background: var(--bg-deep);
+  border-block: 1px solid var(--glass-border);
+}
+
+/* ── Stack vertical générique ──────────────────────── */
+.stack { display: flex; flex-direction: column; }
+.stack-2 { gap: var(--space-2); }
+.stack-4 { gap: var(--space-4); }
+.stack-6 { gap: var(--space-6); }
+.stack-8 { gap: var(--space-8); }
+
+/* ── Flex row utilitaire ───────────────────────────── */
+.row { display: flex; align-items: center; }
+.row--between { justify-content: space-between; }
+.row--center { justify-content: center; }
+.row--gap-3 { gap: var(--space-3); }
+.row--gap-5 { gap: var(--space-5); }

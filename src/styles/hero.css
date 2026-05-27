@@ -1,0 +1,119 @@
+/**
+ * hero.css — Hero cinématique plein écran (photo + titre massif overlay).
+ */
+
+.hero--cinematic {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transform: scale(1.04);
+  animation: heroZoom 14s ease-out forwards;
+}
+@keyframes heroZoom { to { transform: scale(1.12); } }
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(6, 12, 26, 0.45) 0%, transparent 30%, transparent 45%, rgba(6, 12, 26, 0.85) 100%),
+    linear-gradient(90deg, rgba(6, 12, 26, 0.6) 0%, transparent 60%);
+}
+
+.hero__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--container-padding);
+  padding-bottom: clamp(var(--space-7), 8vh, var(--space-9));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero__title {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: #fff;
+  max-width: 16ch;
+}
+
+.hero__subtitle {
+  max-width: 50ch;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-loose);
+}
+
+.hero__cta-row { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-2); }
+
+.hero__facts {
+  display: flex;
+  gap: clamp(var(--space-5), 5vw, var(--space-8));
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  flex-wrap: wrap;
+}
+.hero__facts dt {
+  font-family: var(--font-editorial);
+  font-weight: 600;
+  font-size: var(--fs-2xl);
+  line-height: 1;
+  color: #fff;
+}
+.hero__facts dd { margin-top: 4px; font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.7); }
+
+/* Bouton verre sur photo */
+.btn--glass {
+  --btn-bg: rgba(255, 255, 255, 0.12);
+  --btn-fg: #ffffff;
+  --btn-border: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.btn--glass:hover { --btn-bg: rgba(255, 255, 255, 0.22); --btn-border: #fff; }
+
+@media (max-width: 480px) {
+  .hero__cta-row { flex-direction: column; align-items: stretch; width: 100%; }
+  .hero__cta-row .btn { width: 100%; }
+}
+
+/* ── Entrée fiable (contenu visible par défaut) ─────── */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes heroFadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  .hero.is-in .hero__eyebrow,
+  .hero.is-in .hero__title,
+  .hero.is-in .hero__subtitle,
+  .hero.is-in .hero__cta-row,
+  .hero.is-in .hero__facts { animation: heroFadeUp 0.8s var(--ease-out-expo) backwards; }
+  .hero.is-in .hero__title    { animation-delay: 0.08s; }
+  .hero.is-in .hero__subtitle { animation-delay: 0.18s; }
+  .hero.is-in .hero__cta-row  { animation-delay: 0.28s; }
+  .hero.is-in .hero__facts    { animation-delay: 0.38s; }
+}

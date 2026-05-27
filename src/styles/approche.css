@@ -1,0 +1,91 @@
+/**
+ * approche.css — bande éditoriale pleine largeur (photo + déclaration).
+ * Un seul moment "sombre" dans la page claire : device délibéré.
+ */
+
+.approche {
+  position: relative;
+  min-height: 72vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  isolation: isolate;
+}
+
+.approche__bg {
+  position: absolute;
+  left: 0;
+  top: -16%;
+  width: 100%;
+  height: 132%;
+  object-fit: cover;
+  z-index: -2;
+  will-change: transform;
+}
+
+.approche__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(8, 16, 34, 0.15) 0%, rgba(8, 16, 34, 0.55) 60%, rgba(8, 16, 34, 0.92) 100%),
+    linear-gradient(90deg, rgba(13, 71, 161, 0.35) 0%, transparent 70%);
+}
+
+.approche__content {
+  padding: var(--space-8) clamp(var(--space-6), 5vw, var(--space-9));
+  max-width: 760px;
+  color: #fff;
+}
+
+.approche__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.approche__title {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: var(--space-4) 0 var(--space-4);
+  color: #fff;
+}
+
+.approche__text {
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-loose);
+}
+
+.approche__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-7);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.approche__stats strong {
+  display: block;
+  font-family: var(--font-editorial);
+  font-weight: 600;
+  font-size: var(--fs-2xl);
+  line-height: 1;
+  color: #fff;
+}
+.approche__stats span {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 600px) {
+  .approche { min-height: 80vh; border-radius: var(--radius-lg); }
+  .approche__stats { gap: var(--space-5); }
+}

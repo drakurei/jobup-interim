@@ -1,0 +1,37 @@
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
+
+// MPA setup : chaque page HTML est une entrée propre. Trois.js, GSAP et Lenis
+// sont extraits dans leurs propres chunks pour profiter au mieux du cache.
+export default defineConfig({
+  root: '.',
+  publicDir: 'public',
+  server: {
+    port: 5173,
+    open: true,
+  },
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    target: 'es2022',
+    chunkSizeWarningLimit: 700, // three.js fait ~500 kB minifié, normal
+    rollupOptions: {
+      input: {
+        home: resolve(__dirname, 'index.html'),
+        jobs: resolve(__dirname, 'jobs.html'),
+        apply: resolve(__dirname, 'apply.html'),
+        contact: resolve(__dirname, 'contact.html'),
+        mentions: resolve(__dirname, 'mentions-legales.html'),
+        confidentialite: resolve(__dirname, 'confidentialite.html'),
+        cgu: resolve(__dirname, 'cgu.html'),
+      },
+      output: {
+        manualChunks: {
+          three: ['three'],
+          gsap: ['gsap'],
+          lenis: ['lenis'],
+        },
+      },
+    },
+  },
+});

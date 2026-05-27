@@ -1,0 +1,104 @@
+/**
+ * buttons.css — système de boutons (primary, ghost, ghost-inverse).
+ * Travaille avec MagneticButton.js : les transforms x/y sont gérés en JS.
+ */
+
+.btn {
+  --btn-bg: var(--brand-blue);
+  --btn-bg-hover: var(--brand-glow);
+  --btn-fg: #ffffff;
+  --btn-border: transparent;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-base);
+  letter-spacing: 0;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  will-change: transform;
+  transition:
+    background var(--dur-base) var(--ease-out-expo),
+    box-shadow var(--dur-base) var(--ease-out-expo),
+    color var(--dur-base) var(--ease-out-expo);
+}
+
+.btn__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  will-change: transform;
+}
+
+.btn__arrow {
+  display: inline-block;
+  transition: transform var(--dur-base) var(--ease-spring);
+}
+
+.btn:hover .btn__arrow { transform: translateX(4px); }
+
+/* ── Variantes ──────────────────────────────────────── */
+
+.btn--primary {
+  --btn-bg: var(--brand-blue);
+  --btn-fg: #ffffff;
+}
+
+.btn--primary:hover {
+  --btn-bg: var(--brand-deep);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-border: var(--glass-border-strong);
+  --btn-fg: var(--text-primary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.btn--ghost:hover {
+  --btn-bg: var(--glass-tint-strong);
+  --btn-border: var(--brand-glow);
+  --btn-fg: var(--brand-glow);
+}
+
+/* ── Tailles ────────────────────────────────────────── */
+
+.btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--fs-sm);
+}
+
+.btn--lg {
+  padding: var(--space-5) var(--space-7);
+  font-size: var(--fs-lg);
+}
+
+/* ── Highlight subtle au hover (effet "sheen") ──────── */
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg,
+    transparent 30%,
+    rgba(255,255,255,0.18) 50%,
+    transparent 70%);
+  transform: translateX(-100%);
+  transition: transform var(--dur-slow) var(--ease-out-expo);
+  z-index: -1;
+}
+
+.btn:hover::before { transform: translateX(100%); }

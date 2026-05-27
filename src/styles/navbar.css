@@ -1,0 +1,130 @@
+/**
+ * navbar.css — navigation sticky avec backdrop-blur progressif.
+ * Travaille avec Navbar.js (data-state="top|scrolled").
+ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  z-index: var(--z-navbar);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition:
+    background var(--dur-base) var(--ease-out-expo),
+    border-color var(--dur-base) var(--ease-out-expo),
+    backdrop-filter var(--dur-base) var(--ease-out-expo);
+}
+
+.navbar[data-state="scrolled"] {
+  background: rgba(247, 249, 252, 0.85);
+  border-bottom-color: var(--glass-border);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* Page offres : navbar blanche opaque (au-dessus du bandeau bleu) */
+[data-page="jobs"] .navbar {
+  background: #fff;
+  border-bottom-color: var(--glass-border);
+}
+
+/* Accueil : navbar blanche au-dessus du hero cinématique sombre (état "top") */
+[data-page="home"] .navbar[data-state="top"] .navbar__link { color: rgba(255, 255, 255, 0.82); }
+[data-page="home"] .navbar[data-state="top"] .navbar__link:hover { color: #fff; }
+[data-page="home"] .navbar[data-state="top"] .navbar__logo-svg { filter: brightness(0) invert(1); }
+
+.navbar__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+/* ── Logo ───────────────────────────────────────────── */
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  perspective: 600px;
+}
+
+.navbar__logo-svg {
+  height: 44px;
+  width: auto;
+  transition: transform var(--dur-base) var(--ease-spring), filter var(--dur-base) var(--ease-out-expo);
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 0 0 transparent);
+}
+
+.navbar__brand:hover .navbar__logo-svg {
+  transform: rotateY(12deg) rotateX(-4deg) scale(1.04);
+  filter: drop-shadow(0 0 18px rgba(100, 181, 246, 0.5));
+}
+
+/* ── Nav links ──────────────────────────────────────── */
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.navbar__link {
+  position: relative;
+  padding: var(--space-2) var(--space-4);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out-expo);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  height: 2px;
+  width: 0;
+  background: var(--brand-glow);
+  transform: translateX(-50%);
+  transition: width var(--dur-base) var(--ease-out-expo);
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--text-primary);
+}
+
+.navbar__link:hover::after,
+.navbar__link--active::after {
+  width: calc(100% - var(--space-6));
+}
+
+/* ── CTA ────────────────────────────────────────────── */
+
+.navbar__cta {
+  font-size: var(--fs-sm);
+  padding: var(--space-3) var(--space-5);
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+
+@media (max-width: 880px) {
+  .navbar__nav { display: none; }
+}
+
+@media (max-width: 480px) {
+  .navbar__logo-svg { height: 36px; }
+  .navbar__cta { padding: var(--space-2) var(--space-4); }
+}
