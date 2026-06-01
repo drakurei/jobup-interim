@@ -54,7 +54,9 @@ export function mountNavbar({ mount, currentPage = '' } = {}) {
   if (!target) return () => {};
 
   const linksHTML = LINKS.map((l) => {
-    const isActive = currentPage && l.href.includes(currentPage);
+    // 'index.html' → clé 'index' ; on aligne la page 'home' sur 'index'.
+    const key = l.href.replace('.html', '').split(/[?#]/)[0];
+    const isActive = key === currentPage || (key === 'index' && currentPage === 'home');
     return `<a class="navbar__link${isActive ? ' navbar__link--active' : ''}" href="${l.href}">${l.label}</a>`;
   }).join('');
 

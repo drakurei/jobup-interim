@@ -17,7 +17,7 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     target: 'es2022',
-    chunkSizeWarningLimit: 700, // three.js fait ~500 kB minifié, normal
+    chunkSizeWarningLimit: 700,
     rollupOptions: {
       input: {
         home: resolve(__dirname, 'index.html'),
@@ -30,7 +30,6 @@ export default defineConfig({
       },
       output: {
         manualChunks: {
-          three: ['three'],
           gsap: ['gsap'],
           lenis: ['lenis'],
         },

@@ -24,9 +24,9 @@ const COLUMNS = [
   {
     title: 'Entreprises',
     links: [
-      { href: '#recruteurs', label: 'Recruter via JOB UP' },
-      { href: '#tarifs',     label: 'Tarifs' },
-      { href: '#temoignages',label: 'Témoignages' },
+      { href: 'contact.html',         label: 'Recruter via JOB UP' },
+      { href: 'index.html#specialties', label: 'Nos secteurs' },
+      { href: 'index.html#process',   label: 'Notre méthode' },
     ],
   },
 ];
