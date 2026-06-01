@@ -21,4 +21,4 @@ Voir [docs/specs/2026-05-26-jobup-interim-design.md](docs/specs/2026-05-26-jobup
 - Zéro CSS dans HTML, zéro JS dans HTML
 - ES modules natifs, JSDoc sur fonctions publiques
 - Build statique en sortie (zéro backend)
-# jobup-interim-v2
+# jobup-interim
