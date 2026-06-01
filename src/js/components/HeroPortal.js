@@ -22,10 +22,10 @@ const TEMPLATE = /* html */ `
         une réponse sous 48h, des missions qui comptent.
       </p>
       <div class="hero__cta-row">
-        <a href="/jobs.html" class="btn btn--primary btn--lg" data-magnetic>
+        <a href="jobs.html" class="btn btn--primary btn--lg" data-magnetic>
           <span class="btn__inner"><span class="btn__label">Voir les offres</span><span class="btn__arrow">→</span></span>
         </a>
-        <a href="/apply.html" class="btn btn--glass btn--lg" data-magnetic>
+        <a href="apply.html" class="btn btn--glass btn--lg" data-magnetic>
           <span class="btn__inner"><span class="btn__label">Déposer un CV</span></span>
         </a>
       </div>

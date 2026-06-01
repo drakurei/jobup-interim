@@ -24,7 +24,7 @@ export async function mountFeaturedJobs({ mount } = {}) {
     })}
     <div class="featured-jobs__row">
       <span></span>
-      <a class="btn btn--ghost btn--sm" href="/jobs.html" data-magnetic>
+      <a class="btn btn--ghost btn--sm" href="jobs.html" data-magnetic>
         <span class="btn__inner"><span class="btn__label">Toutes les offres</span> <span class="btn__arrow">→</span></span>
       </a>
     </div>
@@ -37,7 +37,7 @@ export async function mountFeaturedJobs({ mount } = {}) {
 
   let unbindTilt = () => {};
   try {
-    const res = await fetch('/data/jobs.json');
+    const res = await fetch(`${import.meta.env.BASE_URL}data/jobs.json`);
     const data = await res.json();
     const featured = (data.jobs || []).filter((j) => j.featured).slice(0, 3);
     const grid = target.querySelector('.featured-jobs__grid');

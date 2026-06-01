@@ -35,7 +35,7 @@ export function mountUrgencyCTA({ mount } = {}) {
             <span class="btn__arrow" aria-hidden="true">→</span>
           </span>
         </a>
-        <a class="btn btn--ghost btn--lg" href="/contact.html" data-magnetic>
+        <a class="btn btn--ghost btn--lg" href="contact.html" data-magnetic>
           <span class="btn__inner">
             <span class="btn__label">Écrire un message</span>
           </span>

@@ -6,19 +6,19 @@ const COLUMNS = [
   {
     title: 'Offres',
     links: [
-      { href: '/jobs.html?cat=btp',        label: 'BTP' },
-      { href: '/jobs.html?cat=tertiaire',  label: 'Tertiaire' },
-      { href: '/jobs.html?cat=logistique', label: 'Logistique' },
-      { href: '/jobs.html',                label: 'Toutes les offres' },
+      { href: 'jobs.html?cat=btp',        label: 'BTP' },
+      { href: 'jobs.html?cat=tertiaire',  label: 'Tertiaire' },
+      { href: 'jobs.html?cat=logistique', label: 'Logistique' },
+      { href: 'jobs.html',                label: 'Toutes les offres' },
     ],
   },
   {
     title: 'Agence',
     links: [
-      { href: '/apply.html',  label: 'Postuler' },
-      { href: '/contact.html',label: 'Contact' },
-      { href: '#process',     label: 'Process' },
-      { href: '#about',       label: 'À propos' },
+      { href: 'apply.html',   label: 'Postuler' },
+      { href: 'contact.html', label: 'Contact' },
+      { href: 'index.html#process', label: 'Process' },
+      { href: 'index.html#approche',label: 'À propos' },
     ],
   },
   {
@@ -80,7 +80,7 @@ export function mountFooter({ mount } = {}) {
       <div class="footer__bar container">
         <span>© ${year} JOB UP INTÉRIM. Tous droits réservés.</span>
         <span class="footer__bar-links">
-          <a href="/mentions-legales.html">Mentions légales</a> · <a href="/confidentialite.html">Confidentialité</a> · <a href="/cgu.html">CGU</a>
+          <a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="cgu.html">CGU</a>
         </span>
       </div>
     </footer>

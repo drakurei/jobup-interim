@@ -134,7 +134,7 @@ export function mountApplyForm({ mount } = {}) {
       if (bad) ok = false;
     });
     if (!ok) return;
-    form.innerHTML = '<div class="form-success"><h3>Candidature reçue ✓</h3><p>Merci ! Un conseiller vous recontacte sous 24h. Si c\'est urgent : <a href="/contact.html">contact direct</a>.</p></div>';
+    form.innerHTML = '<div class="form-success"><h3>Candidature reçue ✓</h3><p>Merci ! Un conseiller vous recontacte sous 24h. Si c\'est urgent : <a href="contact.html">contact direct</a>.</p></div>';
   };
 
   target.addEventListener('focusin', onFocus);

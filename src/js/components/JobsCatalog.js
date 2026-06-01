@@ -115,7 +115,7 @@ export async function mountJobsCatalog({ mount } = {}) {
   const root = mount || document.getElementById('jobs-mount');
   if (!root) return () => {};
   try {
-    const data = await (await fetch('/data/jobs.json')).json();
+    const data = await (await fetch(`${import.meta.env.BASE_URL}data/jobs.json`)).json();
     state.jobs = data.jobs || [];
     root.innerHTML = buildJobsShellHTML({
       suggestions: SUGGESTIONS,

@@ -10,8 +10,8 @@
 import { bindMagnetic } from './MagneticButton.js';
 
 const LINKS = [
-  { href: '/index.html', label: 'Accueil' },
-  { href: '/jobs.html',  label: 'Offres' },
+  { href: 'index.html', label: 'Accueil' },
+  { href: 'jobs.html',  label: 'Offres' },
 ];
 
 const LOGO_SVG = /* html */ `
@@ -61,13 +61,13 @@ export function mountNavbar({ mount, currentPage = '' } = {}) {
   target.innerHTML = /* html */ `
     <header class="navbar" data-state="top">
       <div class="navbar__inner container">
-        <a class="navbar__brand" href="/index.html" aria-label="JOB UP INTÉRIM, accueil">
+        <a class="navbar__brand" href="index.html" aria-label="JOB UP INTÉRIM, accueil">
           ${LOGO_SVG}
         </a>
         <nav class="navbar__nav" aria-label="Navigation principale">
           ${linksHTML}
         </nav>
-        <a class="btn btn--primary navbar__cta" href="/contact.html" data-magnetic>
+        <a class="btn btn--primary navbar__cta" href="contact.html" data-magnetic>
           <span class="btn__inner">
             <span class="btn__label">Contact</span>
             <span class="btn__arrow" aria-hidden="true">→</span>

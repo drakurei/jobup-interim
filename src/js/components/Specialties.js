@@ -40,7 +40,7 @@ export function mountSpecialties({ mount } = {}) {
   if (!target) return () => {};
 
   const cards = ITEMS.map((it) => /* html */ `
-    <a class="specialty-card" href="/jobs.html?cat=${it.key}">
+    <a class="specialty-card" href="jobs.html?cat=${it.key}">
       <div class="specialty-card__media">
         <img src="${it.img}" alt="${it.alt}" loading="lazy" width="800" height="600">
       </div>

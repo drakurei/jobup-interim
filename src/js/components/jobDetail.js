@@ -48,7 +48,7 @@ export function jobDetailHTML(job) {
       </div>
 
       <div class="jd__actions">
-        <a class="btn btn--primary jd__apply" href="/apply.html?job=${esc(job.id)}">
+        <a class="btn btn--primary jd__apply" href="apply.html?job=${esc(job.id)}">
           <span class="btn__inner"><span class="btn__label">Postuler</span><span class="btn__arrow">→</span></span>
         </a>
         <button class="jd__save" aria-label="Enregistrer l'offre">${BOOKMARK}</button>

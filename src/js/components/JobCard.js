@@ -22,7 +22,7 @@ export function jobCardHTML(job) {
   const featuredClass = job.featured ? ' job-card--featured' : '';
 
   return /* html */ `
-    <a class="job-card${featuredClass}" href="/apply.html?job=${esc(job.id)}"
+    <a class="job-card${featuredClass}" href="apply.html?job=${esc(job.id)}"
        data-tilt data-job-id="${esc(job.id)}">
       <header class="job-card__header">
         <span class="job-card__category ${catClass}">${esc(job.category)}</span>

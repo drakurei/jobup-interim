@@ -6,6 +6,9 @@ import { resolve } from 'path';
 export default defineConfig({
   root: '.',
   publicDir: 'public',
+  // GitHub Pages sert le repo sur le sous-chemin /jobup-interim/
+  // En local (npm run dev), `base` est `/` automatiquement (mode: 'serve').
+  base: process.env.NODE_ENV === 'production' ? '/jobup-interim/' : '/',
   server: {
     port: 5173,
     open: true,
