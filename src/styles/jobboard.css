@@ -32,6 +32,10 @@
     box-shadow: none;
     padding: var(--space-4) var(--space-2) var(--space-9);
     min-height: 100%;
+    /* C'est le drawer (.jb-detail-col) qui défile, pas la fiche : on annule
+       le scroll interne desktop pour éviter un double scroll imbriqué. */
+    max-height: none;
+    overflow: visible;
   }
   .jb-board.jb-detail-open .jd__back {
     display: inline-flex;
@@ -110,10 +114,12 @@
 
 /* ── Colonne détail ─────────────────────────────────── */
 
-/* Le détail suit le flux de la page (pas de scroll interne qui capture
-   la molette sur desktop : la page scrolle normalement). */
+/* Desktop : la fiche reste fixe pendant qu'on parcourt la liste, et possède
+   son propre scroll. data-lenis-prevent (posé dans le markup) évite que Lenis
+   capture la molette au survol de la fiche. */
 .jb-detail-col {
-  position: static;
+  position: sticky;
+  top: calc(var(--navbar-height) + var(--space-4));
 }
 .jd {
   background: #fff;
@@ -121,6 +127,9 @@
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   box-shadow: var(--shadow-card);
+  max-height: calc(100vh - var(--navbar-height) - var(--space-7));
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 /* Bouton retour : visible uniquement dans le drawer mobile. */

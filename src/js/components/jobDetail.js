@@ -31,7 +31,7 @@ export function jobDetailHTML(job) {
   const cat = (job.category || '').toLowerCase();
 
   return /* html */ `
-    <article class="jd">
+    <article class="jd" data-lenis-prevent>
       <button class="jd__back" type="button" aria-label="Retour à la liste des offres">← Toutes les offres</button>
       <div class="jd__top">
         <span class="job-card__category job-card__category--${esc(cat)}">${esc(job.category)}</span>
