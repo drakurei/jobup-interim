@@ -1,0 +1,100 @@
+/**
+ * admin.css — page interne de gestion des offres (admin.html).
+ */
+
+.adm { max-width: 1200px; margin: 0 auto; }
+
+.adm__head { margin-bottom: var(--space-7); max-width: 820px; }
+.adm__title {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+.adm__lead { color: var(--text-secondary); line-height: var(--lh-loose); }
+.adm__lead code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-deep);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--brand-deep);
+}
+
+.adm__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+@media (max-width: 1024px) { .adm__grid { grid-template-columns: 1fr; } }
+
+.adm__col {
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+}
+.adm__h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-xl);
+  color: var(--text-primary);
+  margin-bottom: var(--space-5);
+}
+
+.adm-hint { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-muted); }
+
+.adm-check label {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  cursor: pointer; text-transform: none; letter-spacing: normal; color: var(--text-secondary);
+}
+.adm-check input { width: 18px; height: 18px; accent-color: var(--brand-blue); }
+
+.adm-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+/* ── Liste des offres ────────────────────────────────── */
+.adm__offers {
+  list-style: none;
+  display: flex; flex-direction: column; gap: var(--space-3);
+  max-height: 440px; overflow-y: auto;
+  margin-bottom: var(--space-5);
+}
+.adm-empty {
+  color: var(--text-muted); font-family: var(--font-mono); font-size: var(--fs-sm);
+  padding: var(--space-6); text-align: center;
+}
+.adm-offer {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+.adm-offer__info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.adm-offer__info strong { color: var(--text-primary); font-size: var(--fs-sm); }
+.adm-offer__info span { color: var(--text-muted); font-size: var(--fs-xs); }
+.adm-offer__act { display: flex; gap: var(--space-2); flex-shrink: 0; }
+.adm-mini {
+  font-family: var(--font-mono); font-size: var(--fs-xs);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--glass-border); border-radius: var(--radius-pill);
+  background: #fff; color: var(--brand-blue); cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out-expo);
+}
+.adm-mini:hover { border-color: var(--brand-blue); }
+.adm-mini--danger { color: var(--danger); }
+.adm-mini--danger:hover { border-color: var(--danger); }
+
+/* ── Export ──────────────────────────────────────────── */
+.adm__export-btns { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-4); }
+.adm__output {
+  width: 100%; min-height: 220px; resize: vertical;
+  font-family: var(--font-mono); font-size: var(--fs-xs); line-height: 1.5;
+  padding: var(--space-4);
+  border: 1px solid var(--glass-border); border-radius: var(--radius-md);
+  background: var(--bg-deep); color: var(--text-secondary);
+}

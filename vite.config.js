@@ -27,6 +27,7 @@ export default defineConfig({
         mentions: resolve(__dirname, 'mentions-legales.html'),
         confidentialite: resolve(__dirname, 'confidentialite.html'),
         cgu: resolve(__dirname, 'cgu.html'),
+        admin: resolve(__dirname, 'admin.html'),
       },
       output: {
         manualChunks: {
