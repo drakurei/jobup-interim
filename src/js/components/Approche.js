@@ -16,7 +16,7 @@ export function mountApproche({ mount } = {}) {
   target.innerHTML = /* html */ `
     <div class="approche" data-reveal>
       <img class="approche__bg" src="${IMG}" alt="Équipe JOB UP en réunion"
-           data-parallax="0.06" loading="lazy" width="1700" height="900">
+           data-parallax="0.12" loading="lazy" width="1700" height="900">
       <div class="approche__veil"></div>
       <div class="approche__content">
         <span class="approche__eyebrow">Notre approche</span>
