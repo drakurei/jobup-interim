@@ -56,17 +56,20 @@ function openDetailDrawer(root) {
   const board = root.querySelector('.jb-board');
   if (!board) return;
   board.classList.add('jb-detail-open');
-  document.documentElement.style.overflow = 'hidden';
-  if (window.__lenis) window.__lenis.stop();
   const col = root.querySelector('.jb-detail-col');
-  if (col) col.scrollTop = 0;
+  if (col) {
+    // data-lenis-prevent : le drawer défile nativement, Lenis ne capture pas
+    // le scroll (et ne verrouille pas <html>, ce qui bloquait le scroll mobile).
+    col.setAttribute('data-lenis-prevent', '');
+    col.scrollTop = 0;
+  }
 }
 
 function closeDetailDrawer(root) {
   const board = root.querySelector('.jb-board');
   if (board) board.classList.remove('jb-detail-open');
-  document.documentElement.style.overflow = '';
-  if (window.__lenis) window.__lenis.start();
+  const col = root.querySelector('.jb-detail-col');
+  if (col) col.removeAttribute('data-lenis-prevent');
 }
 
 function wire(root) {

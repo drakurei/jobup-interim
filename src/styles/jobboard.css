@@ -23,6 +23,7 @@
     background: var(--bg-void);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     padding: var(--space-4);
   }
   .jb-board.jb-detail-open .jd {
