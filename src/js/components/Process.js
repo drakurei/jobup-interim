@@ -45,7 +45,7 @@ export function mountProcess({ mount } = {}) {
       title: 'Quatre étapes. <span class="text-gradient-blue">Zéro</span> bullshit.',
       subtitle: 'Un process aussi clair pour toi que pour nous. Tu sais toujours où tu en es, ce qui suit, et combien de temps ça prendra.',
     })}
-    <ol class="process" data-reveal>
+    <ol class="process" data-reveal data-reveal-stagger="0.1">
       ${STEPS.map((s) => `
         <li class="process-step">
           <div class="process-step__num">${s.n}</div>

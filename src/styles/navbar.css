@@ -121,7 +121,9 @@
 /* ── Responsive ─────────────────────────────────────── */
 
 @media (max-width: 880px) {
-  .navbar__nav { display: none; }
+  /* On garde uniquement les liens marqués "mobile" (ex. Offres). */
+  .navbar__link:not(.navbar__link--mobile) { display: none; }
+  .navbar__nav { gap: 0; }
 }
 
 @media (max-width: 480px) {

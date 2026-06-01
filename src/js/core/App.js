@@ -54,6 +54,8 @@ export function bootApp({ page, onReady }) {
     mountNavbar({ currentPage: page });
     mountFooter();
     const smooth = initSmoothScroll({ enabled: !caps.prefersReduced });
+    // Exposé pour pouvoir mettre Lenis en pause (ex. drawer plein écran mobile).
+    window.__lenis = smooth.lenis || null;
     if (typeof onReady === 'function') onReady({ caps, smooth });
   };
 

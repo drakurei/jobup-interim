@@ -48,6 +48,27 @@ function renderDetail(root) {
   root.querySelector('#jb-detail').innerHTML = jobDetailHTML(job);
 }
 
+// Sur mobile/tablette le détail est masqué : on l'ouvre en plein écran (drawer).
+const isMobileBoard = () => window.matchMedia('(max-width: 1100px)').matches;
+
+function openDetailDrawer(root) {
+  if (!isMobileBoard()) return;
+  const board = root.querySelector('.jb-board');
+  if (!board) return;
+  board.classList.add('jb-detail-open');
+  document.documentElement.style.overflow = 'hidden';
+  if (window.__lenis) window.__lenis.stop();
+  const col = root.querySelector('.jb-detail-col');
+  if (col) col.scrollTop = 0;
+}
+
+function closeDetailDrawer(root) {
+  const board = root.querySelector('.jb-board');
+  if (board) board.classList.remove('jb-detail-open');
+  document.documentElement.style.overflow = '';
+  if (window.__lenis) window.__lenis.start();
+}
+
 function wire(root) {
   const refresh = () => renderList(root);
 
@@ -96,7 +117,7 @@ function wire(root) {
     refresh();
   });
 
-  // Sélection d'une carte → détail
+  // Sélection d'une carte → détail (+ ouverture du drawer sur mobile)
   root.querySelector('#jb-list').addEventListener('click', (e) => {
     if (e.target.closest('.jb-card__bookmark')) { e.stopPropagation(); return; }
     const card = e.target.closest('.jb-card');
@@ -104,6 +125,12 @@ function wire(root) {
     state.selectedId = card.dataset.id;
     root.querySelectorAll('.jb-card').forEach((c) => c.classList.toggle('is-active', c.dataset.id === state.selectedId));
     renderDetail(root);
+    openDetailDrawer(root);
+  });
+
+  // Bouton retour du drawer mobile.
+  root.querySelector('#jb-detail').addEventListener('click', (e) => {
+    if (e.target.closest('.jd__back')) closeDetailDrawer(root);
   });
 }
 

@@ -32,6 +32,7 @@ export function jobDetailHTML(job) {
 
   return /* html */ `
     <article class="jd">
+      <button class="jd__back" type="button" aria-label="Retour à la liste des offres">← Toutes les offres</button>
       <div class="jd__top">
         <span class="job-card__category job-card__category--${esc(cat)}">${esc(job.category)}</span>
         ${job.isNew ? '<span class="jd__new">Nouveau</span>' : ''}

@@ -102,11 +102,25 @@ export function mountApplyForm({ mount } = {}) {
     </div>
   `;
 
+  // Pré-remplissage du poste visé : on remplace l'identifiant (?job=j-002)
+  // par l'intitulé réel de l'offre, récupéré dans jobs.json.
   const params = new URLSearchParams(window.location.search);
   const jobParam = params.get('job');
   if (jobParam) {
     const input = target.querySelector('#apply-job');
-    if (input) input.value = `Mission ${jobParam}`;
+    if (input) {
+      const looksLikeId = /^j-\w+$/i.test(jobParam);
+      if (!looksLikeId) input.value = jobParam; // métier libre éventuel
+      fetch(`${import.meta.env.BASE_URL}data/jobs.json`)
+        .then((r) => r.json())
+        .then((data) => {
+          const job = (data.jobs || []).find((j) => j.id === jobParam);
+          if (job && job.title) {
+            input.value = job.company ? `${job.title} — ${job.company}` : job.title;
+          }
+        })
+        .catch(() => {});
+    }
   }
 
   const form = target.querySelector('#apply-form');

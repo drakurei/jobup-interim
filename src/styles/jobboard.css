@@ -11,7 +11,43 @@
 }
 @media (max-width: 1100px) {
   .jb-board { grid-template-columns: 240px 1fr; }
+  /* Le détail est masqué tant qu'aucune offre n'est ouverte… */
   .jb-detail-col { display: none; }
+
+  /* …puis s'ouvre en plein écran (drawer) au clic sur une offre. */
+  .jb-board.jb-detail-open .jb-detail-col {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    background: var(--bg-void);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--space-4);
+  }
+  .jb-board.jb-detail-open .jd {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: var(--space-4) var(--space-2) var(--space-9);
+    min-height: 100%;
+  }
+  .jb-board.jb-detail-open .jd__back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+    padding: var(--space-2) var(--space-4);
+    background: #fff;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-pill);
+    color: var(--brand-blue);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    cursor: pointer;
+  }
 }
 @media (max-width: 820px) {
   .jb-board { grid-template-columns: 1fr; }
@@ -73,9 +109,10 @@
 
 /* ── Colonne détail ─────────────────────────────────── */
 
+/* Le détail suit le flux de la page (pas de scroll interne qui capture
+   la molette sur desktop : la page scrolle normalement). */
 .jb-detail-col {
-  position: sticky;
-  top: calc(var(--navbar-height) + var(--space-4));
+  position: static;
 }
 .jd {
   background: #fff;
@@ -83,9 +120,10 @@
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   box-shadow: var(--shadow-card);
-  max-height: calc(100vh - var(--navbar-height) - var(--space-7));
-  overflow-y: auto;
 }
+
+/* Bouton retour : visible uniquement dans le drawer mobile. */
+.jd__back { display: none; }
 .jd--empty { display: grid; place-items: center; min-height: 300px; color: var(--text-muted); }
 
 .jd__top { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }

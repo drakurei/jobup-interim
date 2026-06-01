@@ -11,7 +11,7 @@ import { bindMagnetic } from './MagneticButton.js';
 
 const LINKS = [
   { href: 'index.html', label: 'Accueil' },
-  { href: 'jobs.html',  label: 'Offres' },
+  { href: 'jobs.html',  label: 'Offres', mobile: true },
 ];
 
 const LOGO_SVG = /* html */ `
@@ -57,7 +57,8 @@ export function mountNavbar({ mount, currentPage = '' } = {}) {
     // 'index.html' → clé 'index' ; on aligne la page 'home' sur 'index'.
     const key = l.href.replace('.html', '').split(/[?#]/)[0];
     const isActive = key === currentPage || (key === 'index' && currentPage === 'home');
-    return `<a class="navbar__link${isActive ? ' navbar__link--active' : ''}" href="${l.href}">${l.label}</a>`;
+    const mobileCls = l.mobile ? ' navbar__link--mobile' : '';
+    return `<a class="navbar__link${isActive ? ' navbar__link--active' : ''}${mobileCls}" href="${l.href}">${l.label}</a>`;
   }).join('');
 
   target.innerHTML = /* html */ `

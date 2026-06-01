@@ -29,9 +29,10 @@
 
 .process-step__num {
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 800;
   font-size: 3rem;
-  line-height: 1;
+  /* line-height > 1 : évite que le sommet pointu des chiffres (1, 4) soit rogné. */
+  line-height: 1.15;
   color: var(--brand-glow);
   letter-spacing: -0.04em;
 }

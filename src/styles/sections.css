@@ -83,6 +83,8 @@
   line-height: 1.05;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-4);
+  /* Laisse la place à l'icône en haut à droite (pas de chevauchement). */
+  padding-right: 60px;
 }
 .value-card__title-highlight {
   font-style: italic;
@@ -94,10 +96,11 @@
   position: absolute;
   top: var(--space-5);
   right: var(--space-5);
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   opacity: 0.85;
 }
+.value-card__icon svg { width: 100%; height: 100%; display: block; }
 
 /* ── Featured jobs section ───────────────────────────── */
 
